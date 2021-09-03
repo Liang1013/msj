@@ -29,7 +29,7 @@ class TestLogin(unittest.TestCase):
         self.log.ls_btn()
 
     @ddt.data(*ecl)
-    def test_login(self,data):
+    def test_login_A(self,data):
         '''msj登陆测试用例'''
         self.add_log(data["user"],data["paw"])
         t = self.log.ls_text_login(

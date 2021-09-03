@@ -56,3 +56,13 @@ class Base():
         '''封装封装鼠标悬浮'''
         ActionChains(self.driver).move_to_element(
             self.is_find_element(locater)).perform()
+
+    def is_scroll_element(self,locater):
+        '''通过定位，页面滑动到指定位置'''
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView();",self.is_find_element(locater))
+
+    def is_scroll_top(self):
+        '''页面滑动到顶部'''
+        self.driver.execute_script(
+            "window.scrollTo(0,0)")

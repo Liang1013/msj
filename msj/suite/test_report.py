@@ -21,7 +21,7 @@ def TestReport():
     fg = open(reportpath, "wb")
 
     reunner = HTMLTestRunner.HTMLTestRunner(stream=fg,
-                                            title="msj测试用例",
+                                            title="麦商机测试用例",
                                             description="自动化测试")
     '''运行'''
     reunner.run(discover)
