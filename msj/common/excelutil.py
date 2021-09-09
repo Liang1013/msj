@@ -7,7 +7,7 @@ class ExcelUtil():
         self.table = self.data.sheet_by_name(sheetName)
         #获取第一行做个key值
         self.keys = self.table.row_values(0)
-        #获取总行数
+        #获取总行数w
         self.rowNum = self.table.nrows
         #获取纵列数
         self.colNum = self.table.ncols

@@ -1,9 +1,5 @@
 from common.base import Base
-from page.login_page import LoginPage
-from selenium import webdriver
 from common.window_switching import WindowSwitching
-
-import time
 
 '''
 ID = "id"

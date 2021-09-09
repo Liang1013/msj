@@ -1,13 +1,14 @@
 from common.excelutil import ExcelUtil
 
-import os
+import os,yaml
 
 class Route():
 
     '''封装查找路径方法'''
 
     def is_route(self):
-        garderpath = os.path.dirname(os.path.realpath(__file__))  # 获取当前文件父级目录
+        garderpath = os.path.dirname(
+            os.path.realpath(__file__))  # 获取当前文件父级目录
         garder = os.path.dirname(garderpath)  # 获取父目录的父目录
         paths = "/data/chromedriver"
 
@@ -15,15 +16,24 @@ class Route():
 
     def is_excel(self,file):
         # 调取excel表数据
-        propath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-        filepath = os.path.join(propath,"data",file)
+        propath = os.path.dirname(os.path.dirname
+                                  (os.path.realpath(__file__)))
+        filepath = os.path.join(
+            propath,"data",file)
         data = ExcelUtil(filepath)
 
         return data.dict_data()
 
 
     def is_report(self,locater):
-        propath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-        filepath = os.path.join(propath,locater)
+        propath = os.path.dirname(os.path.dirname
+                                  (os.path.realpath(__file__)))
+        filepath = os.path.join(
+            propath,locater)
 
         return filepath
+
+if __name__ == "__main__":
+    sender = Route().is_report_email()["sender"]
+    reportpath = Route().is_report("report/") + "report.html"
+    print(reportpath)

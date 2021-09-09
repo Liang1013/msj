@@ -1,6 +1,6 @@
 from common import HTMLTestRunner
 from common.route import Route
-from common.report_email import ReportEmail
+from common.sendmail import SendMail
 import  unittest
 
 def TestReport():
@@ -12,7 +12,7 @@ def TestReport():
     '''
     discover = unittest.defaultTestLoader.discover(start_dir=
                                                    Route().is_report("case"),
-                                                   pattern="test*.py")
+                                                   pattern="test_login.py")
 
     '''
     :已二进制写入路径下
@@ -26,8 +26,13 @@ def TestReport():
     '''运行'''
     reunner.run(discover)
 
-    '''发送邮件'''
-    ReportEmail(reportpath)
+    '''发送附件邮件'''
+    smtp_receiver = ['123@163.com','321@163.com']
+    m = SendMail(
+        username='123@163.com', passwd='123456', recv=smtp_receiver,
+        title='自动化测试报告', content='msj自动化测试报告', file=reportpath
+    )
+    m.send_mail()
 
 
 if __name__ == "__main__":
