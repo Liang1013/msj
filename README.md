@@ -6,6 +6,8 @@
                  common 封装代码，公共代码
 
                  data   文件模块
+                 
+                 logs   日志文件
 
                  page 封装测试用例模块
 
