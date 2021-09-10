@@ -1,0 +1,16 @@
+2021-09-09 17:47:40,381 sendmail.py [line:56] INFO 测试报告邮件发送成功
+2021-09-09 17:52:39,349 test_login.py [line:42] INFO msj登陆成功
+2021-09-09 17:54:25,672 test_login.py [line:44] INFO msj登陆失败
+2021-09-09 17:56:51,234 test_login.py [line:42] INFO msj登陆成功
+2021-09-09 17:58:20,802 test_login.py [line:42] INFO msj登陆成功
+2021-09-09 17:59:36,760 test_login.py [line:42] INFO msj登陆成功
+2021-09-09 17:59:38,497 sendmail.py [line:56] INFO 测试报告邮件发送成功
+2021-09-09 18:11:25,411 test_login.py [line:44] INFO msj登陆失败
+2021-09-09 18:12:10,137 base.py [line:33] ERROR <page.login_page.LoginPage object at 0x7fc765a31040> 页面元素未能找到('css selector', '.content-container-form>form>div:nth-child(1)>div>div>span>input1') 元素
+2021-09-09 18:14:02,749 base.py [line:48] ERROR <page.login_page.LoginPage object at 0x7fee4fa17a00> 页面元素未能找到('xpath', "//*[@id='container']/section/header/div/div[3]/div/span[3]1") 元素
+2021-09-09 18:14:02,750 test_login.py [line:44] INFO msj登陆失败
+2021-09-09 18:15:12,407 test_login.py [line:44] INFO msj登陆失败
+2021-09-09 18:19:01,307 test_login.py [line:26] INFO ----------开始执行测试用例----------
+2021-09-09 18:19:02,301 test_login.py [line:50] INFO msj登陆成功
+2021-09-09 18:19:02,302 test_login.py [line:29] INFO ----------pass----------
+2021-09-09 18:19:45,041 sendmail.py [line:56] INFO 测试报告邮件发送成功

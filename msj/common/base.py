@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
+from common.logger import Log
 
 '''
 Example:
@@ -14,6 +15,7 @@ Example:
 class Base():
 
     def __init__(self,driver:webdriver.Chrome):
+        self.logger = Log(logger='Base').get_log()
         self.driver = driver
         self.times = 10
         self.t = 0.5
@@ -24,9 +26,12 @@ class Base():
         :param locater: 0.5s查找一次，共10s，超过10s抛出异常
         :return:
         '''
-        element = WebDriverWait(self.driver,self.times,self.t
-                                ).until(lambda x: x.find_element(*locater))
-        return element
+        try:
+            element = WebDriverWait(self.driver,self.times,self.t).until(lambda x: x.find_element(*locater))
+            return element
+        except:
+            self.logger.error('%s 页面元素未能找到%s 元素' % (self,locater))
+
 
     def is_text_element(self,locator,text):
         '''
@@ -40,6 +45,7 @@ class Base():
                                     ).until(EC.text_to_be_present_in_element(locator,text))
             return element
         except:
+            self.logger.error('%s 页面元素未能找到%s 元素' % (self, locator))
             return False
 
     def is_send_keys(self,locater,text):

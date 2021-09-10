@@ -12,7 +12,7 @@ def TestReport():
     '''
     discover = unittest.defaultTestLoader.discover(start_dir=
                                                    Route().is_report("case"),
-                                                   pattern="test_login.py")
+                                                   pattern="test*.py")
 
     '''
     :已二进制写入路径下
@@ -27,10 +27,10 @@ def TestReport():
     reunner.run(discover)
 
     '''发送附件邮件'''
-    smtp_receiver = ['123@163.com','321@163.com']
+    smtp_receiver = ['123@163.com']
     m = SendMail(
         username='123@163.com', passwd='123456', recv=smtp_receiver,
-        title='自动化测试报告', content='msj自动化测试报告', file=reportpath
+        title='自动化测试报告', file=reportpath
     )
     m.send_mail()
 

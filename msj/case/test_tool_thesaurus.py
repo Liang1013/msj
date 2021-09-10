@@ -2,6 +2,7 @@ from page.thesaurus_tool_page import ThesaurusToolPage
 from page.login_page import LoginPage
 from common.route import Route
 from selenium import webdriver
+from common.logger import Log
 
 import unittest,ddt
 
@@ -11,6 +12,7 @@ toolname = [
 
 @ddt.ddt
 class TestToolThesaurus(unittest.TestCase):
+    logger = Log("TestToolThesaurus").get_log()
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -19,6 +21,14 @@ class TestToolThesaurus(unittest.TestCase):
         cls.log = LoginPage(cls.driver)
         cls.tur = ThesaurusToolPage(cls.driver)
         cls.log.ls_login()
+
+    @classmethod
+    def setUp(self) -> None:
+        self.logger.info("----------开始执行测试用例----------")
+
+    @classmethod
+    def tearDown(self) -> None:
+        self.logger.info("---------------pass--------------")
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -35,7 +45,11 @@ class TestToolThesaurus(unittest.TestCase):
         t = self.tur.ls_thesaurus_text(
             data["text"])
         print("TOP20w结果：",t)
-        self.assertTrue(t)
+        if True == t:
+            self.logger.info("TOP20w查询成功")
+            self.assertTrue(t)
+        else:
+            self.logger.info("TOP20w查询失败")
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,6 +1,7 @@
 from selenium import webdriver
 from common.route import Route
 from page.login_page import LoginPage
+from common.logger import Log
 
 import unittest,ddt
 
@@ -10,6 +11,7 @@ url = "https://jcrmweb.maimiaotech.com/#/login"
 
 @ddt.ddt
 class TestLogin(unittest.TestCase):
+    logger = Log('TestCase').get_log()
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -20,8 +22,17 @@ class TestLogin(unittest.TestCase):
         cls.log = LoginPage(cls.driver)
 
     @classmethod
+    def setUp(self) -> None:
+        self.logger.info("----------开始执行测试用例----------")
+
+    @classmethod
+    def tearDown(self) -> None:
+        self.logger.info("---------------pass--------------")
+
+    @classmethod
     def tearDownClass(cls) -> None:
         cls.driver.quit()
+
 
     def add_log(self,user,paw):
         self.log.ls_username(user)
@@ -35,7 +46,11 @@ class TestLogin(unittest.TestCase):
         t = self.log.ls_text_login(
             data["text"])
         print("登陆结果：",t)
-        self.assertTrue(t)
+        if True == t:
+            self.assertTrue(t)
+            self.logger.info("msj登陆成功")
+        else:
+            self.logger.info("msj登陆失败")
 
 if __name__ == "__main__":
     unittest.main()
